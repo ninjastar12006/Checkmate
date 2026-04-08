@@ -195,7 +195,7 @@ export class NotificationsService implements INotificationsService {
 				status: monitor.status,
 			},
 			content: {
-				title: `Escalated Alert: ${monitor.name}`,
+				title: `Escalated: Monitor Down: ${monitor.name}`,
 				summary: `Monitor "${monitor.name}" is still in an incident state and has been escalated.`,
 				details,
 				timestamp: new Date(),

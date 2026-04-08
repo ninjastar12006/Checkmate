@@ -804,8 +804,20 @@ const CreateMonitorPage = () => {
 										<TextField
 											{...field}
 											type="number"
-											value={field.value ?? 30}
-											onChange={(event) => field.onChange(Number(event.target.value))}
+											value={field.value ?? ""}
+											onChange={(event) => {
+												const rawValue = event.target.value;
+												if (rawValue === "") {
+													field.onChange(undefined);
+													return;
+												}
+												field.onChange(Number(rawValue));
+											}}
+											inputProps={{
+												inputMode: "numeric",
+												min: 1,
+												step: 1,
+											}}
 											fieldLabel={t(
 												"pages.createMonitor.form.escalation.option.escalateAfterMinutes.label"
 											)}
